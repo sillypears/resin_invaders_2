@@ -1,0 +1,165 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/ui/title.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/title.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/score/highscores.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/Trigram.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+outline_size = 1
+outline_color = Color( 0.827451, 0.780392, 0.266667, 1 )
+extra_spacing_space = -3
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+outline_size = 1
+outline_color = Color( 0.0627451, 0.717647, 0.478431, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 26
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+outline_size = 4
+outline_color = Color( 1, 0.352941, 0.941176, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "ui_accept"
+pressed = true
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[node name="Title" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="TitleContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="Intro" type="VBoxContainer" parent="TitleContainer"]
+margin_right = 758.0
+margin_bottom = 1014.0
+size_flags_horizontal = 5
+
+[node name="Title" type="VBoxContainer" parent="TitleContainer/Intro"]
+margin_right = 758.0
+margin_bottom = 341.0
+size_flags_horizontal = 5
+
+[node name="Title" type="Label" parent="TitleContainer/Intro/Title"]
+margin_right = 758.0
+margin_bottom = 258.0
+size_flags_horizontal = 7
+custom_fonts/font = ExtResource( 4 )
+text = "RESIN 
+INVADERS"
+align = 1
+
+[node name="Maybe You\'ll Win" type="Label" parent="TitleContainer/Intro/Title"]
+margin_top = 266.0
+margin_right = 758.0
+margin_bottom = 305.0
+size_flags_horizontal = 7
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "Maybe You'll Win Something"
+align = 1
+
+[node name="Line" type="Label" parent="TitleContainer/Intro/Title"]
+margin_top = 313.0
+margin_right = 758.0
+margin_bottom = 341.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "-------------------------------------------------"
+align = 1
+
+[node name="Scores" type="VBoxContainer" parent="TitleContainer/Intro"]
+margin_top = 349.0
+margin_right = 758.0
+margin_bottom = 399.0
+size_flags_vertical = 5
+
+[node name="HighscoresLabel" type="Label" parent="TitleContainer/Intro/Scores"]
+margin_right = 758.0
+margin_bottom = 42.0
+size_flags_horizontal = 7
+custom_fonts/font = SubResource( 3 )
+text = "WINNERS"
+align = 1
+
+[node name="Highscores" parent="TitleContainer/Intro/Scores" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 50.0
+margin_right = 758.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="Controls" type="VBoxContainer" parent="TitleContainer/Intro"]
+margin_top = 893.0
+margin_right = 758.0
+margin_bottom = 924.0
+size_flags_vertical = 10
+
+[node name="Controls" type="HBoxContainer" parent="TitleContainer/Intro/Controls"]
+margin_right = 758.0
+margin_bottom = 31.0
+size_flags_vertical = 2
+
+[node name="Movement" type="Label" parent="TitleContainer/Intro/Controls/Controls"]
+margin_right = 342.0
+margin_bottom = 31.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 4 )
+text = "A D/<-- --> - MOVE"
+
+[node name="Shoot" type="Label" parent="TitleContainer/Intro/Controls/Controls"]
+margin_left = 489.0
+margin_right = 758.0
+margin_bottom = 31.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 5 )
+text = "Space - SHOOT"
+align = 2
+
+[node name="Game" type="VBoxContainer" parent="TitleContainer/Intro"]
+margin_top = 932.0
+margin_right = 758.0
+margin_bottom = 1014.0
+
+[node name="StartGame" type="Button" parent="TitleContainer/Intro/Game"]
+margin_right = 758.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 6 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
+text = "START"
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -18.353
+autoplay = true
+
+[connection signal="pressed" from="TitleContainer/Intro/Game/StartGame" to="." method="_on_StartGame_pressed"]

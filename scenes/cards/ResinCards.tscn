@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/network/GetCardsHTTPRequest.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cards/resin_cards.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Trigram.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+font_data = ExtResource( 3 )
+
+[node name="ResinCards" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="GetCardsHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 1 )
+
+[node name="GettingCaps" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "GETTING DATA..."
+align = 1
+valign = 1
+
+[node name="GotCaps" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "GOT DATA"
+align = 1
+valign = 1
+
+[connection signal="done" from="GetCardsHTTPRequest" to="." method="_on_GetCardsHTTPRequest_done"]

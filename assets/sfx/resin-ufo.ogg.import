@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/resin-ufo.ogg-12282f278fcf92c4158d8024caab0631.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/resin-ufo.ogg"
+dest_files=[ "res://.import/resin-ufo.ogg-12282f278fcf92c4158d8024caab0631.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

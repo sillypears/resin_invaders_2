@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/enemies/enemy_config.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/enemy4-sheet.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+enemy = ExtResource( 2 )
+width = 32
+animation = "move"
+points = 25

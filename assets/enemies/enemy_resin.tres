@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/enemies/enemy_config.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+width = 48
+animation = "move"
+points = 50

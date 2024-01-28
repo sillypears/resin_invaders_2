@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/cards/card_spawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cards/spawn_timer.gd" type="Script" id=2]
+[ext_resource path="res://scenes/cards/card_enemy.tscn" type="PackedScene" id=3]
+
+[node name="CardSpawner" type="Node2D"]
+position = Vector2( 731, 98 )
+z_index = 1
+script = ExtResource( 1 )
+card_scene = ExtResource( 3 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+script = ExtResource( 2 )
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

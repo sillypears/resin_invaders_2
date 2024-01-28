@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/player/laser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/player/laser_spawn.gd" type="Script" id=2]
+
+[node name="LaserSpawn" type="Node2D"]
+position = Vector2( 0, -10 )
+script = ExtResource( 2 )
+laser_scene = ExtResource( 1 )

@@ -1,0 +1,170 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/score/submit_highscore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/score/entry_submit.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Trigram.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/submit_entry_font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 5
+outline_color = Color( 0.164706, 0.180392, 1, 1 )
+font_data = ExtResource( 3 )
+
+[node name="EntrySubmit" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Container" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="SubmitContainer" type="VBoxContainer" parent="Container"]
+margin_right = 739.0
+margin_bottom = 992.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/SubmitContainer"]
+margin_right = 739.0
+margin_bottom = 110.0
+size_flags_vertical = 2
+
+[node name="SubmitLabel" type="Label" parent="Container/SubmitContainer/VBoxContainer"]
+margin_right = 739.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+text = "Submit Your Entry"
+align = 1
+
+[node name="LineLabel" type="Label" parent="Container/SubmitContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 739.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 1 )
+text = "--------------------------"
+align = 1
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Container/SubmitContainer"]
+margin_left = 285.0
+margin_top = 279.0
+margin_right = 454.0
+margin_bottom = 312.0
+size_flags_horizontal = 4
+
+[node name="ScoreLabel" type="Label" parent="Container/SubmitContainer/ScoreContainer"]
+margin_right = 136.0
+margin_bottom = 33.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Score:"
+
+[node name="ScoreData" type="Label" parent="Container/SubmitContainer/ScoreContainer"]
+margin_left = 144.0
+margin_right = 169.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+
+[node name="NameContainer" type="HBoxContainer" parent="Container/SubmitContainer"]
+margin_left = 81.0
+margin_top = 320.0
+margin_right = 658.0
+margin_bottom = 373.0
+size_flags_horizontal = 4
+
+[node name="NameLabel" type="Label" parent="Container/SubmitContainer/NameContainer"]
+margin_top = 10.0
+margin_right = 117.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Name:"
+
+[node name="NameEntry" type="LineEdit" parent="Container/SubmitContainer/NameContainer"]
+margin_left = 125.0
+margin_right = 577.0
+margin_bottom = 53.0
+size_flags_vertical = 5
+custom_constants/minimum_spaces = 36
+custom_fonts/font = ExtResource( 4 )
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+placeholder_text = "Discord/Instagram"
+
+[node name="EmailContainer" type="HBoxContainer" parent="Container/SubmitContainer"]
+margin_top = 381.0
+margin_right = 739.0
+margin_bottom = 434.0
+size_flags_horizontal = 4
+
+[node name="EmailLabel" type="Label" parent="Container/SubmitContainer/EmailContainer"]
+margin_top = 10.0
+margin_right = 279.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Paypal Email"
+
+[node name="EmailEntry" type="LineEdit" parent="Container/SubmitContainer/EmailContainer"]
+margin_left = 287.0
+margin_right = 739.0
+margin_bottom = 53.0
+custom_constants/minimum_spaces = 36
+custom_fonts/font = ExtResource( 4 )
+placeholder_text = "For invoice"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Container/SubmitContainer"]
+margin_top = 485.0
+margin_right = 736.0
+margin_bottom = 713.0
+hint_tooltip = "Yes I mean it"
+size_flags_horizontal = 0
+size_flags_vertical = 10
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/SubmitContainer/VBoxContainer2"]
+margin_right = 736.0
+margin_bottom = 228.0
+
+[node name="EmailEntry" type="CheckBox" parent="Container/SubmitContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 49.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+
+[node name="AgreeLabel" type="Label" parent="Container/SubmitContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 56.0
+margin_right = 736.0
+margin_bottom = 228.0
+rect_min_size = Vector2( 680, 0 )
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 4 )
+text = "I agree that I would like to receive an invoice for $5.22+shipping for 1 MX keycap.
+If I do not check the box I forfeit my entry and have no recourse."
+autowrap = true
+
+[node name="SubmitEntryButton" type="Button" parent="Container/SubmitContainer"]
+margin_top = 922.0
+margin_right = 739.0
+margin_bottom = 992.0
+size_flags_vertical = 10
+custom_fonts/font = SubResource( 2 )
+text = "Submit Entry"
+
+[node name="SubmitHighscore" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 316.0
+margin_right = 164.0
+margin_bottom = 316.0
+
+[connection signal="pressed" from="Container/SubmitContainer/SubmitEntryButton" to="." method="validate_entry"]
